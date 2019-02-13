@@ -29,11 +29,17 @@ namespace Project1._0
 
             ConsoleKey finished;
             finished = exit();
+            int position;
+            int rank;
             Console.WriteLine("Welcome to the team manager");
 
             while (finished != ConsoleKey.X)
             {
 
+                position = PlayerPos();
+
+
+                rank = PlayerRank();
 
 
             }
@@ -66,6 +72,20 @@ namespace Project1._0
 
             Console.WriteLine("Press any key to managing a team, press the x key once you are done to finish");
             return sentinel = Console.ReadKey(true).Key;
+        }
+
+        static int PlayerPos()
+        {
+            int position; //Local
+            Console.WriteLine("Please enter the row of the product you would like to enter");
+            return position = Convert.ToInt32(Console.ReadLine());
+        }
+
+        static int PlayerRank()
+        {
+            int column; //Local
+            Console.WriteLine("Please enter the column of the product you would like to enter");
+            return column = Convert.ToInt32(Console.ReadLine());
         }
 
     }
