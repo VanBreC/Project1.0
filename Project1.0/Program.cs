@@ -38,8 +38,31 @@ namespace Project1._0
 
                 position = PlayerPos();
 
+                if (position < 1)
+                {
+                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    position = Convert.ToInt32(Console.ReadLine());
+                }
+                else
+                if (position > 8)
+                {
+                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    position = Convert.ToInt32(Console.ReadLine());
+                }
 
                 rank = PlayerRank();
+
+                if (rank < 1)
+                {
+                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    rank = Convert.ToInt32(Console.ReadLine());
+                }
+                else
+                if (rank > 8)
+                {
+                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    rank = Convert.ToInt32(Console.ReadLine());
+                }
 
 
             }
