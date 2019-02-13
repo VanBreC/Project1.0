@@ -8,7 +8,7 @@ namespace Project1._0
         static void Main(string[] args)
         {
             List<string> SelectedPlayers = new List<string>();
-            
+
 
             string[,] Quarterbacks = {{"\t", "The Best", "\t2nd Best", "\t3rd Best", "\t4th Best", "\t5th Best\n"},
                                     {"Quarterback", "Dwayne Haskins", "\tKyler Murray", "\tDrew Lock", "\tDaniel Jones", "\tWill Grier"},
@@ -26,13 +26,27 @@ namespace Project1._0
 
             outputTable(Quarterbacks);
             outputTable(Runningbacks);
-            
+
+            ConsoleKey finished;
+            finished = exit();
+            Console.WriteLine("Welcome to the team manager");
+
+            while (finished != ConsoleKey.X)
+            {
 
 
+
+            }
         }
+
+
+
+
+
+
+
         static void outputTable(string[,] prod)
         {
-
 
             for (var i = 0; i < prod.GetLength(0); i++)
             {
@@ -44,11 +58,15 @@ namespace Project1._0
                 Console.WriteLine("");
             }
 
-
-
-
         }
 
+        static ConsoleKey exit()
+        {
+            ConsoleKey sentinel; //Local
+
+            Console.WriteLine("Press any key to managing a team, press the x key once you are done to finish");
+            return sentinel = Console.ReadKey(true).Key;
+        }
 
     }
 }
