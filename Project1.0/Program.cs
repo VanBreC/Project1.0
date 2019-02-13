@@ -101,14 +101,40 @@ namespace Project1._0
         {
             int position; //Local
             Console.WriteLine("Please enter the number of the player postion you wish to select from");
-            return position = Convert.ToInt32(Console.ReadLine());
+            position = Convert.ToInt32(Console.ReadLine());
+            if (position < 1)
+            {
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                PlayerPos();
+            }
+            else if (position > 8)
+            {
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                PlayerPos();
+            }
+            else{}
+
+            return position;
         }
 
         static int PlayerRank()
         {
-            int column; //Local
+            int rank; //Local
             Console.WriteLine("Please enter the ranking number of the player you wish to add to your team");
-            return column = Convert.ToInt32(Console.ReadLine());
+            rank = Convert.ToInt32(Console.ReadLine());
+            if (rank < 1)
+            {
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                PlayerRank();
+            }
+            else if (rank > 8)
+            {
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                PlayerRank();
+            }
+            else { }
+
+            return rank;
         }
 
     }
