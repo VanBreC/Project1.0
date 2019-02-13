@@ -40,13 +40,13 @@ namespace Project1._0
 
                 if (position < 1)
                 {
-                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                     position = Convert.ToInt32(Console.ReadLine());
                 }
                 else
                 if (position > 8)
                 {
-                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                     position = Convert.ToInt32(Console.ReadLine());
                 }
 
@@ -54,13 +54,13 @@ namespace Project1._0
 
                 if (rank < 1)
                 {
-                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                     rank = Convert.ToInt32(Console.ReadLine());
                 }
                 else
                 if (rank > 8)
                 {
-                    Console.WriteLine("Invalid entry, please enter a number between 0 and 2");
+                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                     rank = Convert.ToInt32(Console.ReadLine());
                 }
 
@@ -93,21 +93,21 @@ namespace Project1._0
         {
             ConsoleKey sentinel; //Local
 
-            Console.WriteLine("Press any key to managing a team, press the x key once you are done to finish");
+            Console.WriteLine("Press any key to start managing a team, press the x key once you are done to finish");
             return sentinel = Console.ReadKey(true).Key;
         }
 
         static int PlayerPos()
         {
             int position; //Local
-            Console.WriteLine("Please enter the row of the product you would like to enter");
+            Console.WriteLine("Please enter the number of the player postion you wish to select from");
             return position = Convert.ToInt32(Console.ReadLine());
         }
 
         static int PlayerRank()
         {
             int column; //Local
-            Console.WriteLine("Please enter the column of the product you would like to enter");
+            Console.WriteLine("Please enter the ranking number of the player you wish to add to your team");
             return column = Convert.ToInt32(Console.ReadLine());
         }
 
