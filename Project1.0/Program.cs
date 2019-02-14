@@ -10,7 +10,7 @@ namespace Project1._0
             List<string> SelectedPlayers = new List<string>();
 
 
-            string[,] QuarterbacksDisplay =
+            string[,] QuarterbackDisplay =
             {
                 {"\t", "The Best", "\t2nd Best", "\t3rd Best", "\t4th Best", "\t5th Best\n"},
                 {"Quarterback", "Dwayne Haskins", "\tKyler Murray", "\tDrew Lock", "\tDaniel Jones", "\tWill Grier"},
@@ -19,7 +19,7 @@ namespace Project1._0
             };
 
 
-            string[,] RunningbacksDisplay =
+            string[,] RunningbackDisplay =
             {
                 {"\nRunningback", "Josh Jacobs", "\tDamien Harris", "\tDavid Montgomery", "Justice Hill", "\tDevin Singletary"},
                 {"\t", "(Alabama)\t", "(Alabama)\t", "(Iowa St.)\t", "(Oklahoma St.)", "\t(FAU)   \t"},
@@ -27,14 +27,78 @@ namespace Project1._0
             };
 
 
-            string[,] SelectPlayerList =
+            string[,] WideRecieverDisplay =
             {
-                {"Dwayne Haskins", "Kyler Murray", "Drew Lock", "Daniel Jones", "Will Grier"},
-                {"Josh Jacobs", "Damien Harris", "David Montgomery", "Justice Hill", "Devin Singletary"}
+                {"\nWide-Reciever", "D.K. Metcalf", "A.J. Brown", "N'Keal Harry", "Marquise Brown", "Kelvin Harmon"},
+                {"\t", "(Ole Miss)", "(Ole Miss)", "(Arizona St.)", "(Oklahoma)", "(NC State)"},
+                {"\t", "$23,400,000", "\t$21,900,300", "\t$19,300,230", "\t$13,400,230", "\t$10,000,000\n"}
             };
 
 
-            int[,] Cost = { { 26400100, 20300100, 17420300, 13100145, 10300000 }, { 24500100, 19890200, 18700800, 15000000, 11600400 } };
+            string[,] DeffensiveLinemanDisplay =
+            {
+                {"\nDefensive Lineman", "Nick Bosa", "Quinnen Williams", "Ed Oliver", "Jeffery Simmons", "Clelin Ferrell"},
+                {"\t", "(Ohio St.)", "(Alabama)", "(Houston)", "(Miss. State)", "(Clemson)"},
+                {"\t", "$26,200,300", "\t$22,000,000", "\t$16,000,000", "\t$18,000,000", "\t$13,000,000\n"}
+            };
+
+
+            string[,] DeffensiveBackDisplay =
+            {
+                {"\nDefensive-Back", "Greedy Williams", "Deandre Baker", "Byron Murphy", "Deionte Thompson", "Amani Oruwariye"},
+                {"\t", "(LSU)", "(Georgia)", "(Washington)", "(Alabama)", "(Penn State)"},
+                {"\t", "$24,000,000", "\t$22,500,249", "\t$20,000,100", "\t$16,000,200", "\t$11,899,999\n"}
+            };
+
+
+            string[,] TightEndDisplay =
+            {
+                {"\nTight Ends", "Noah Fant", "Irv Smith", "T.J. Hockenson", "Kaden Smith", "Josh Oliver"},
+                {"\t", "(Iowa)", "(Alabama)", "(Iowa)", "(Stanford)", "(San Jose St.)"},
+                {"\t", "$27,800,900", "\t$21,000,800", "\t$17,499,233", "\t$27,900,200", "\t$14,900,333\n"}
+            };
+
+
+            string[,] LineBackerDisplay =
+            {
+                {"\nLine-Backer's", "Josh Allen", "Devin White", "Montez Sweat", "Mack Wilson", "Devin Bush"},
+                {"\t", "(Kentucky)", "(LSU)", "(Miss. State)", "(Alabama)", "(Michigan)"},
+                {"\t", "$22,900,300", "\t$19,000,590", "\t$18,000,222", "\t$12,999,999", "\t$10,000,100\n"}
+            };
+
+
+            string[,] OffensiveTackleDisplay =
+            {
+                {"\nOffensive Tackles", "Jonah Williams", "Greg Little", "Cody Ford", "Jawaan Taylor", "Yodny Cajuste"},
+                {"\t", "(Alabama)", "(Ole Miss)", "(Oklahoma)", "(Florida)", "(West Virginia)"},
+                {"\t", "$23,000,000", "\t$20,000,000", "\t$19,400,000", "\t$16,200,700", "\t$15,900,000\n"}
+            };
+
+
+            string[,] SelectPlayerList =
+            {
+                {"Dwayne Haskins", "Kyler Murray", "Drew Lock", "Daniel Jones", "Will Grier"},
+                {"Josh Jacobs", "Damien Harris", "David Montgomery", "Justice Hill", "Devin Singletary"},
+                {"D.K. Metcalf", "A.J. Brown", "N'Keal Harry", "Marquise Brown", "Kelvin Harmon"},
+                {"Nick Bosa", "Quinnen Williams", "Ed Oliver", "Jeffery Simmons", "Clelin Ferrell"},
+                {"Greedy Williams", "Deandre Baker", "Byron Murphy", "Deionte Thompson", "Amani Oruwariye"},
+                {"Noah Fant", "Irv Smith", "T.J. Hockenson", "Kaden Smith", "Josh Oliver"},
+                {"Josh Allen", "Devin White", "Montez Sweat", "Mack Wilson", "Devin Bush"},
+                {"Jonah Williams", "Greg Little", "Cody Ford", "Jawaan Taylor", "Yodny Cajuste"}
+            };
+
+
+            int[,] Cost = 
+            { 
+                { 26400100, 20300100, 17420300, 13100145, 10300000 },
+                { 24500100, 19890200, 18700800, 15000000, 11600400 },
+                { 3400000, 21900300, 19300230, 13400230, 10000000 },
+                { 26200300, 22000000, 16000000, 18000000, 13000000 },
+                { 24000000, 22500249, 20000100, 16000200, 11899999 },
+                { 27800900, 21000800, 17499233, 27900200, 14900333 },
+                { 22900300, 19000590, 18000222, 12999999, 10000100 },
+                { 23000000, 20000000, 19400000, 16200700, 15900000 }
+            };
 
 
             int Cash = 95000000;
@@ -58,8 +122,14 @@ namespace Project1._0
                         Console.Clear();
 
                         //Print Player Listing
-                        outputTable(QuarterbacksDisplay);
-                        outputTable(RunningbacksDisplay);
+                        outputTable(QuarterbackDisplay);
+                        outputTable(RunningbackDisplay);
+                        outputTable(WideRecieverDisplay);
+                        outputTable(DeffensiveLinemanDisplay);
+                        outputTable(DeffensiveBackDisplay);
+                        outputTable(TightEndDisplay);
+                        outputTable(LineBackerDisplay);
+                        outputTable(OffensiveTackleDisplay);
 
                         //Display Current Cash Available
                         Console.WriteLine("Current Cash {0}\n", (Cash - totalCost).ToString("c"));
