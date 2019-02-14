@@ -24,8 +24,7 @@ namespace Project1._0
 
             int Cash = 95000000;
 
-            outputTable(Quarterbacks);
-            outputTable(Runningbacks);
+            int totalCost = 0;
 
             ConsoleKey finished;
             finished = exit();
@@ -36,36 +35,29 @@ namespace Project1._0
             while (finished != ConsoleKey.X)
             {
 
+                Console.Clear();
+
+
+                Console.WriteLine("Current Cash {0}", Cash - totalCost);
+
+                //Print Player Listing
+                outputTable(Quarterbacks);
+                outputTable(Runningbacks);
+
+
                 position = PlayerPos();
 
-                if (position < 1)
-                {
-                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
-                    position = Convert.ToInt32(Console.ReadLine());
-                }
-                else
-                if (position > 8)
-                {
-                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
-                    position = Convert.ToInt32(Console.ReadLine());
-                }
 
                 rank = PlayerRank();
 
-                if (rank < 1)
-                {
-                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
-                    rank = Convert.ToInt32(Console.ReadLine());
-                }
-                else
-                if (rank > 8)
-                {
-                    Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
-                    rank = Convert.ToInt32(Console.ReadLine());
-                }
+                totalPrice(Quarterbacks, Cost, ref totalCost, position, rank);
 
-
+                
             }
+
+
+
+
         }
 
 
@@ -91,23 +83,23 @@ namespace Project1._0
 
         static ConsoleKey exit()
         {
-            ConsoleKey sentinel; //Local
+            ConsoleKey sentinel;
 
-            Console.WriteLine("Press any key to start managing a team, press the x key once you are done to finish");
+            Console.WriteLine("Press any key to start managing your team, press 'Shift + X' key once you are done to finish");
             return sentinel = Console.ReadKey(true).Key;
         }
 
         static int PlayerPos()
         {
             int position; //Local
-            Console.WriteLine("Please enter the number of the player postion you wish to select from");
-            position = Convert.ToInt32(Console.ReadLine());
-            if (position < 1)
+            Console.WriteLine("Please enter the position number you wish to select from");
+            position = Convert.ToInt32(Console.ReadLine()) - 1;
+            if (position < 0)
             {
                 Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                 PlayerPos();
             }
-            else if (position > 8)
+            else if (position > 7)
             {
                 Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
                 PlayerPos();
@@ -121,20 +113,27 @@ namespace Project1._0
         {
             int rank; //Local
             Console.WriteLine("Please enter the ranking number of the player you wish to add to your team");
-            rank = Convert.ToInt32(Console.ReadLine());
-            if (rank < 1)
+            rank = Convert.ToInt32(Console.ReadLine()) - 1;
+            
+            if (rank < 0)
             {
-                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 5");
                 PlayerRank();
             }
-            else if (rank > 8)
+            else if (rank > 4)
             {
-                Console.WriteLine("Invalid entry, please enter a number between 1 and 8");
+                Console.WriteLine("Invalid entry, please enter a number between 1 and 5");
                 PlayerRank();
             }
             else { }
 
             return rank;
+        }
+
+        static void totalPrice(string[,] player, int[,] price, ref int total, int position, int rank)
+        {
+            Console.WriteLine($"You have selected {player[position, rank]} for {price[position, rank].ToString("c")}");
+            total += price[position, rank];
         }
 
     }
