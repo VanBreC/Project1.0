@@ -10,7 +10,7 @@ namespace Project1._0
             List<string> SelectedPlayers = new List<string>();
 
 
-            string[,] QuarterbacksDisplay = 
+            string[,] QuarterbacksDisplay =
             {
                 {"\t", "The Best", "\t2nd Best", "\t3rd Best", "\t4th Best", "\t5th Best\n"},
                 {"Quarterback", "Dwayne Haskins", "\tKyler Murray", "\tDrew Lock", "\tDaniel Jones", "\tWill Grier"},
@@ -19,7 +19,7 @@ namespace Project1._0
             };
 
 
-            string[,] RunningbacksDisplay = 
+            string[,] RunningbacksDisplay =
             {
                 {"\nRunningback", "Josh Jacobs", "\tDamien Harris", "\tDavid Montgomery", "Justice Hill", "\tDevin Singletary"},
                 {"\t", "(Alabama)\t", "(Alabama)\t", "(Iowa St.)\t", "(Oklahoma St.)", "\t(FAU)   \t"},
@@ -41,40 +41,56 @@ namespace Project1._0
 
 
             int totalCost = 0;
-
-
-            ConsoleKey finished;
-            finished = exit();
-            int position;
-            int rank;
-            Console.WriteLine("Welcome to the team manager");
-
-            while (finished != ConsoleKey.X)
+            bool repeat = true;
+            Console.WriteLine("Welcome To The Team Manager!");
+            do
             {
+                ConsoleKey finished;
+                finished = exit();
+                int position;
+                int rank;
+                if (finished == ConsoleKey.Enter)
+                {
+                    repeat = false;
+                    while (finished != ConsoleKey.X)
+                    {
 
-                Console.Clear();
+                        Console.Clear();
 
-                //Print Player Listing
-                outputTable(QuarterbacksDisplay);
-                outputTable(RunningbacksDisplay);
+                        //Print Player Listing
+                        outputTable(QuarterbacksDisplay);
+                        outputTable(RunningbacksDisplay);
 
-                //Display Current Cash Available
-                Console.WriteLine("Current Cash {0}\n", Cash - totalCost);
+                        //Display Current Cash Available
+                        Console.WriteLine("Current Cash {0}\n", (Cash - totalCost).ToString("c"));
 
-                //Row Selection
-                position = PlayerPos();
+                        //Row Selection
+                        position = PlayerPos();
 
-                //Column Selection
-                rank = PlayerRank();
+                        //Column Selection
+                        rank = PlayerRank();
 
-                //Take the cost of the player
-                totalPrice(SelectPlayerList, Cost, ref totalCost, position, rank, ref Cash, ref SelectedPlayers);
+                        //Take And Check The Player Name And Cost To Make Sure Your Cash Doesnt Go Negative
+                        //And That The Player Hasnt Already Been Selected
+                        PriceAndPlayerCheck(SelectPlayerList, Cost, ref totalCost, position, rank, ref Cash, ref SelectedPlayers);
 
+                        finished = exit();
 
+                    }
+                    Console.WriteLine("\nEnding Program\nThank You For Creating Your Team");
 
+                }
+                else if (finished == ConsoleKey.X)
+                {
+                    Console.WriteLine("\nEnding Program");
+                    repeat = false;
+                }
+                else if ((finished != ConsoleKey.Enter) || (finished != ConsoleKey.X))
+                {
+                    Console.WriteLine("ERROR: Wrong Key Input");
+                }
             }
-
-            Console.WriteLine("\nThank You For Creating Your Team");
+            while (repeat == true);
 
         }
 
@@ -101,10 +117,11 @@ namespace Project1._0
 
         static ConsoleKey exit()
         {
+            Console.WriteLine("Press The 'Enter' Key To Continue Or Press 'Shift + X' To Finish\n");
             ConsoleKey sentinel;
-
-            Console.WriteLine("Press any key to start managing your team, press 'Shift + X' key once you are done to finish\n");
-            return sentinel = Console.ReadKey(true).Key;
+            sentinel = Console.ReadKey().Key;
+            Console.Clear();
+            return sentinel;
         }
 
         static int PlayerPos()
@@ -148,27 +165,23 @@ namespace Project1._0
             return rank;
         }
 
-        static void totalPrice(string[,] player, int[,] price, ref int total, int position, int rank, ref int Cash, ref List<string> AddPlayer)
+        static void PriceAndPlayerCheck(string[,] player, int[,] price, ref int total, int position, int rank, ref int Cash, ref List<string> AddPlayer)
         {
 
             if ((Cash - (total + price[position, rank])) < 0)
             {
                 Console.WriteLine("ERROR: Cash Will Reach Below Zero, This Player Cannot Be Selected");
-                Console.WriteLine("Please Press Enter And Select A Different Player");
-                Console.ReadLine();
                 total += 0;
             }
             else if (AddPlayer.Contains(player[position, rank]) == true)
             {
-                Console.WriteLine("\n{0} Has Already Been Added To Your Team, Please Press 'Enter' And Select A Different Player", player[position, rank]);
-                Console.ReadLine();
+                Console.WriteLine("\n{0} Has Already Been Added To Your Team", player[position, rank]);
             }
             else
             {
-                Console.WriteLine($"\nYou have selected {player[position, rank]} for {price[position, rank].ToString("c")}\nPress 'Enter' To Continue");
+                Console.WriteLine($"\nYou have selected {player[position, rank]} for {price[position, rank].ToString("c")}");
                 total += price[position, rank];
                 AddPlayer.Add(player[position, rank]);
-                Console.ReadLine();
             }
             
         }
