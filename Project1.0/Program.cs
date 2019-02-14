@@ -87,7 +87,7 @@ namespace Project1._0
                 }
                 else if ((finished != ConsoleKey.Enter) || (finished != ConsoleKey.X))
                 {
-                    Console.WriteLine("ERROR: Wrong Key Input");
+                    Console.WriteLine($"ERROR: Wrong Key Input (The '{finished.ToString()}' Key Was Pressed)");
                 }
             }
             while (repeat == true);
@@ -117,7 +117,7 @@ namespace Project1._0
 
         static ConsoleKey exit()
         {
-            Console.WriteLine("Press The 'Enter' Key To Continue Or Press 'Shift + X' To Finish\n");
+            Console.WriteLine("Press The 'Enter' Key To Continue Or Press 'X' To Exit The Team Manager\n");
             ConsoleKey sentinel;
             sentinel = Console.ReadKey().Key;
             Console.Clear();
