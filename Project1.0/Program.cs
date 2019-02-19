@@ -7,9 +7,10 @@ namespace Project1._0
     {
         static void Main(string[] args)
         {
+            //Players selected by user
             List<string> SelectedPlayers = new List<string>();
 
-
+            //Quarterbacks displayed in table
             string[,] QuarterbackDisplay =
             {
                 {"    Position\t", "1. The Best", "\t2. 2nd Best", "\t3. 3rd Best", "\t4. 4th Best", "\t5. 5th Best\n_________________________________________________________________________________________________________________________________________"},
@@ -18,7 +19,7 @@ namespace Project1._0
                 {"\t\t", "$26,400,100", "\t$20,300,100", "\t$17,420,300", "\t$13,100,145", "\t$10,300,000\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Runningbacks displayed in table
             string[,] RunningbackDisplay =
             {
                 {"2. Runningback\t", "Josh Jacobs", "\tDamien Harris", "\tDavid Montgomery", "Justice Hill", "\tDevin Singletary"},
@@ -26,7 +27,7 @@ namespace Project1._0
                 {"\t\t", "$24,500,100", "\t$19,890,200", "\t$18,700,800", "\t$15,000,000", "\t$11,600,400\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Wide Recievers displayed in table
             string[,] WideRecieverDisplay =
             {
                 {"3. Wide-Reciever", "D.K. Metcalf\t", "A.J. Brown\t", "N'Keal Harry\t", "Marquise Brown\t", "Kelvin Harmon"},
@@ -34,7 +35,7 @@ namespace Project1._0
                 {"\t\t", "$23,400,000", "\t$21,900,300", "\t$19,300,230", "\t$13,400,230", "\t$10,000,000\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Deffensive Lineman displayed in table
             string[,] DeffensiveLinemanDisplay =
             {
                 {"4. Defensive Lineman", "Nick Bosa", "\tQuinnen Williams", "Ed Oliver", "\tJeffery Simmons", "\tClelin Ferrell"},
@@ -42,7 +43,7 @@ namespace Project1._0
                 {"\t\t", "$26,200,300", "\t$22,000,000", "\t$16,000,000", "\t$18,000,000", "\t$13,000,000\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Deffensive Backs displayed in table
             string[,] DeffensiveBackDisplay =
             {
                 {"5. Defensive-Back", "Greedy Williams\t", "Deandre Baker\t", "Byron Murphy\t", "Deionte Thompson", "Amani Oruwariye"},
@@ -50,7 +51,7 @@ namespace Project1._0
                 {"\t\t", "$24,000,000", "\t$22,500,249", "\t$20,000,100", "\t$16,000,200", "\t$11,899,999\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Tight Ends displayed in table
             string[,] TightEndDisplay =
             {
                 {"6. Tight Ends\t", "Noah Fant\t", "Irv Smith\t", "T.J. Hockenson\t", "Kaden Smith\t", "Josh Oliver"},
@@ -58,7 +59,7 @@ namespace Project1._0
                 {"\t\t", "$27,800,900", "\t$21,000,800", "\t$17,499,233", "\t$27,900,200", "\t$14,900,333\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Line Backers displayed in table
             string[,] LineBackerDisplay =
             {
                 {"7. Line-Backer's", "Josh Allen\t", "Devin White\t", "Montez Sweat\t", "Mack Wilson\t", "Devin Bush"},
@@ -66,7 +67,7 @@ namespace Project1._0
                 {"\t\t", "$22,900,300", "\t$19,000,590", "\t$18,000,222", "\t$12,999,999", "\t$10,000,100\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //Offensive Tacklers displayed in table
             string[,] OffensiveTackleDisplay =
             {
                 {"8. Offensive Tackles", "Jonah Williams\t", "Greg Little\t", "Cody Ford\t", "Jawaan Taylor\t", "Yodny Cajuste"},
@@ -74,7 +75,7 @@ namespace Project1._0
                 {"\t\t", "$23,000,000", "\t$20,000,000", "\t$19,400,000", "\t$16,200,700", "\t$15,900,000\n_________________________________________________________________________________________________________________________________________"}
             };
 
-
+            //List of all players that the program will be able to select from based off user input
             string[,] SelectPlayerList =
             {
                 {"Dwayne Haskins", "Kyler Murray", "Drew Lock", "Daniel Jones", "Will Grier"},
@@ -87,7 +88,7 @@ namespace Project1._0
                 {"Jonah Williams", "Greg Little", "Cody Ford", "Jawaan Taylor", "Yodny Cajuste"}
             };
 
-
+            //List of player costs that the program will use based off of user input
             int[,] Cost = 
             { 
                 { 26400100, 20300100, 17420300, 13100145, 10300000 },
@@ -100,15 +101,22 @@ namespace Project1._0
                 { 23000000, 20000000, 19400000, 16200700, 15900000 }
             };
 
-
+            //Starting Cash for user
             int Cash = 95000000;
 
-
+            //Total Cost of players selected
             int totalCost = 0;
+
+            //used to let the program repeat until a correct input is entered
             bool repeat = true;
+
+            //Welcome message
             Console.WriteLine("Welcome To The Team Manager!");
+
+            //loop connected to 'repeat' assigned above
             do
             {
+                //assigns key press to continue or end player select loop
                 ConsoleKey finished;
                 finished = exit();
                 int position;
@@ -118,6 +126,12 @@ namespace Project1._0
                     repeat = false;
                     while (finished != ConsoleKey.X)
                     {
+                        if (SelectedPlayers.Count == 5 )
+                        {
+                            Console.WriteLine("Player Limit Reached");
+                            
+                            break;
+                        }
 
                         Console.Clear();
 
